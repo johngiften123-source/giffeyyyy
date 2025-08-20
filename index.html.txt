@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For BUE CHELLO ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #ffdde1;  /* light pink */
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background-color: #fff;
+      color: #e91e63;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 1.5em;
+      display: none;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Hearts Animation */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -10%;
+        left: calc(100% * var(--i));
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>BUE CHELLO, will you be mine forever? 💍</h1>
+    <button onclick="showLove()">Click Me ❤️</button>
+    <div class="message" id="loveMessage">I Love You More Than Words Can Say... 💖</div>
+  </div>
+
+  <!-- Heart animation -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.setProperty('--i', Math.random());
+      heart.style.animationDuration = `${Math.random() * 4 + 3}s`;
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- Confetti and surprise logic -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    function showLove() {
+      // Confetti burst
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+
+      // Reveal hidden message
+      const msg = document.getElementById("loveMessage");
+      msg.style.display = "block";
+      setTimeout(() => {
+        msg.style.opacity = 1;
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>
